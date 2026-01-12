@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from './HomeScreen'
-import FlightForm from './FlightForm'
-import FlightHistoryScreen from './FlightHistoryScreen'
-import FlightDetailsScreen from './FlightDetailsScreen'
-import ErrorComponent from './Error'
-import getUserFlights from '../ApiCalls'
+import HomeScreen from './components/HomeScreen'
+import FlightForm from './components/FlightForm'
+import FlightHistoryScreen from './components/FlightHistoryScreen'
+import FlightDetailsScreen from './components/FlightDetailsScreen'
+import ErrorComponent from './components/Error'
+import getUserFlights from './ApiCalls'
 
 
 const Stack = createNativeStackNavigator()
