@@ -1,7 +1,7 @@
 ## branches prefix
 feature/add-cool-button
 fix/etc-etc-etc
-refactor/make-loop-more-better
+refactor/make-loop-better
 
 ## commit messages
 “feat: Do the thing”
