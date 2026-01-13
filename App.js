@@ -15,7 +15,6 @@ class AppNavigator extends Component {
   constructor() {
     super()
     this.state = {
-      user: {},
       userFlights: [],
       error: ''
     }
@@ -24,9 +23,8 @@ class AppNavigator extends Component {
   componentDidMount() {
     getUserFlights()
       .then(data => {
-        this.setState({ userFlights: data.data })
-      })
-      .catch(error => {
+        this.setState({ userFlights: data })
+      }).catch(error => {
         console.error(error)
         this.setState({ error: 'Could not gather your flights, please try again later!' })
       })
@@ -34,7 +32,7 @@ class AppNavigator extends Component {
 
   addFlight = (newFlight) => {
     console.log(newFlight)
-    fetch("https://flight-log-be-24cea5be4c8e.herokuapp.com/api/v1/users/1/flights/", {
+    fetch("https://flight-log-api.vercel.app/api/flights", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

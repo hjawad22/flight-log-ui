@@ -29,7 +29,7 @@ const FlightHistoryScreen = ({ route }) => {
     userFlights.map((flight) => {
 
     const flightId = flight.id;
-    const flightDetails = flight.attributes;
+    
   
     
     return (
@@ -38,11 +38,11 @@ const FlightHistoryScreen = ({ route }) => {
       <View>
         <FlightCard
           id={flightId}
-          date={flightDetails.date}
-          departure={flightDetails.start_location}
-          arrival={flightDetails.end_location}
-          aircraft={flightDetails.aircraft}
-          pilot={flightDetails.role}
+          date={flight.date}
+          departure={flight.start_location}
+          arrival={flight.end_location}
+          aircraft={flight.aircraft}
+          pilot={flight.role}
         />
       </View>
     </TouchableOpacity>

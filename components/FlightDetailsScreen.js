@@ -8,14 +8,14 @@ function FlightDetailsScreen({ route }) {
       <View style={styles.container}>
         <View style={styles.detailsContainer}>
           <Text style={styles.title}>Flight Details</Text>
-          <Text style={styles.label}>Date: {flight.attributes.date}</Text>
-          <Text style={styles.label}>Departure: {flight.attributes.start_location}</Text>
-          <Text style={styles.label}>Arrival: {flight.attributes.end_location}</Text>
-          <Text style={styles.label}>Day Hours: {flight.attributes.day_hours}</Text>
-          <Text style={styles.label}>Night Hours: {flight.attributes.night_hours}</Text>
-          <Text style={styles.label}>Aircraft: {flight.attributes.aircraft}</Text>
-          <Text style={styles.label}>Role: {flight.attributes.role}</Text>
-          <Text style={styles.label}>Description: {flight.attributes.description}</Text>
+          <Text style={styles.label}>Date: {flight.date}</Text>
+          <Text style={styles.label}>Departure: {flight.start_location}</Text>
+          <Text style={styles.label}>Arrival: {flight.end_location}</Text>
+          <Text style={styles.label}>Day Hours: {flight.day_hours}</Text>
+          <Text style={styles.label}>Night Hours: {flight.night_hours}</Text>
+          <Text style={styles.label}>Aircraft: {flight.aircraft}</Text>
+          <Text style={styles.label}>Role: {flight.role}</Text>
+          <Text style={styles.label}>Description: {flight.description}</Text>
 
         </View>
       </View>
