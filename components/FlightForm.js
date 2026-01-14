@@ -62,7 +62,7 @@ class FlightForm extends Component {
         <Modal transparent animationType="fade">
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={styles.modalText}>Flight log submitted!</Text>
+              <Text style={styles.modalText}>Flight Submitted!</Text>
             </View>
           </View>
         </Modal>

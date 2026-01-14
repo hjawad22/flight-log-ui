@@ -3,12 +3,12 @@ export const getUserFlights = async () => {
   const response = await fetch('https://flight-log-api.vercel.app/api/flights');
 
   if (!response.ok) {
-  throw new Error('Unable to fetch user flights. Please try again later.');
+  throw new Error('We are unable to retrieve user flights. Please try again later.');
   }
   
   const data = await response.json();
   return data; 
-};
+}
 
 export const postFlight = async (newFlight) => {
   const response = await fetch('https://flight-log-api.vercel.app/api/flights', {
@@ -23,4 +23,17 @@ export const postFlight = async (newFlight) => {
 
   const data = await response.json();
   return data;
-};
+}
+
+export const deleteFlight = async (id) => {
+  const response = await fetch(`https://flight-log-api.vercel.app/api/flights/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error('Unable to delete flight. Please try again later.');
+  }
+
+  const data = await response.json();
+  return data;
+}
