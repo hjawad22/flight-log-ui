@@ -22,9 +22,6 @@ class FlightForm extends Component {
     if (name === 'night_hours' || name === 'day_hours') {
       const numericValue = value.replace(/[^0-9.]/g, '');
       this.setState({ [name]: numericValue });
-    } else if (name === 'start_location' || name === 'end_location') {
-      const uppercasedValue = value.toUpperCase();
-      this.setState({ [name]: uppercasedValue });
     } else {
       this.setState({ [name]: value });
     }
@@ -32,7 +29,6 @@ class FlightForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const newFlight = { ...this.state };
     this.props.addFlight(newFlight);
     this.clearInputs();
