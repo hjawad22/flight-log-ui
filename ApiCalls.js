@@ -1,11 +1,26 @@
-const getUserFlights = () => {
-  return fetch('https://flight-log-be-24cea5be4c8e.herokuapp.com/api/v1/users/1/flights/')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Unable to fetch user flights. Please try again later.');
-      }
-      return response.json();
-    });
+
+export const getUserFlights = async () => {
+  const response = await fetch('https://flight-log-api.vercel.app/api/flights');
+
+  if (!response.ok) {
+  throw new Error('Unable to fetch user flights. Please try again later.');
+  }
+  
+  const data = await response.json();
+  return data; 
 };
 
-export default getUserFlights
+export const postFlight = async (newFlight) => {
+  const response = await fetch('https://flight-log-api.vercel.app/api/flights', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newFlight),
+  });
+
+  if (!response.ok) {
+    throw new Error('Unable to add flight. Please try again later.');
+  }
+
+  const data = await response.json();
+  return data;
+};

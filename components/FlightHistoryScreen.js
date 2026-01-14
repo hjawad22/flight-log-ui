@@ -5,8 +5,6 @@ import { useNavigation } from '@react-navigation/native'
 import PropTypes from 'prop-types'
 
 const FlightHistoryScreen = ({ route }) => {
- 
-  console.log('first console history', route.params.userFlights)
   const userFlights = route.params?.userFlights
   console.log('userFlights:', userFlights);
     if (!userFlights) {
@@ -25,24 +23,21 @@ const FlightHistoryScreen = ({ route }) => {
   const flightCards = userFlights.length === 0 ? (
     <Text>No Flights Logged</Text>
   ) : (
-
-    userFlights.map((flight) => {
-
-    const flightId = flight.id;
-    const flightDetails = flight.attributes;
-  
-    
-    return (
-
+          userFlights.map((flight) => {
+          const flightId = flight.id;
+          const isoDate = flight.date;
+          const formattedDate = isoDate.split('T')[0];
+      
+      return (
       <TouchableOpacity key={flight.id} onPress={() => handleFlightCardPress(flight)}>
       <View>
         <FlightCard
           id={flightId}
-          date={flightDetails.date}
-          departure={flightDetails.start_location}
-          arrival={flightDetails.end_location}
-          aircraft={flightDetails.aircraft}
-          pilot={flightDetails.role}
+          date={formattedDate}
+          departure={flight.start_location}
+          arrival={flight.end_location}
+          aircraft={flight.aircraft}
+          pilot={flight.role}
         />
       </View>
     </TouchableOpacity>

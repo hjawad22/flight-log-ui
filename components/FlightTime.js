@@ -7,7 +7,7 @@ const FlightTime = ({ userFlights }) => {
   const getTotalHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
 
-      let time = parseInt(cur.attributes.day_hours) + parseInt(cur.attributes.night_hours)
+      let time = parseInt(cur.day_hours) + parseInt(cur.night_hours)
 
       return acc + time
     }, 0)
@@ -17,7 +17,7 @@ const FlightTime = ({ userFlights }) => {
   const getDayHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
 
-      let time = parseInt(cur.attributes.day_hours)
+      let time = parseInt(cur.day_hours)
 
       return acc + time
     }, 0)
@@ -27,7 +27,7 @@ const FlightTime = ({ userFlights }) => {
   const getNightHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
 
-      let time = parseInt(cur.attributes.night_hours)
+      let time = parseInt(cur.night_hours)
 
       return acc + time
     }, 0)
