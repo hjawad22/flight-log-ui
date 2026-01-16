@@ -1,11 +1,10 @@
-import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { Link } from '@react-navigation/native'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { View, Text, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
 
 const FlightCard = ({ date, departure, arrival, aircraft, pilot }) => {
   return (
-    <View style={styles.card}>
+    <View style={styles.mainContainer}>
       <View style={styles.row}>
         <View style={styles.column}>
           <Text style={styles.label}>Date:</Text>
@@ -34,33 +33,47 @@ const FlightCard = ({ date, departure, arrival, aircraft, pilot }) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  card: {
+// Containers
+  mainContainer: {
     backgroundColor: 'white',
     borderRadius: 8,
-    padding: 16,
-    marginBottom: 10,
-    elevation: 2,
-    height: 175,
-    width: 250,
-    justifyContent: 'space-between',
+    padding: 15,
+    margin:  8,
+    height: 180,
+    width: 350,
+    justifyContent: 'left',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 5,
   },
+
   row: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 8,
+
   },
+
   column: {
     flex: 1,
   },
+
+// Text
   label: {
+    color: '#696969',
     fontWeight: 'bold',
-    marginBottom: 4,
+    margin: 2
   },
+
   text: {
-    marginBottom: 0,
-  },
+    color: '#1D275F',
+    fontWeight: 'bold'
+  }
 });
 
 FlightCard.propTypes = {
@@ -69,5 +82,6 @@ FlightCard.propTypes = {
   arrival: PropTypes.string.isRequired,
   aircraft: PropTypes.string.isRequired,
   pilot: PropTypes.string.isRequired,
-};
+}
+
 export default FlightCard;

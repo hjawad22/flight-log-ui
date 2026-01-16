@@ -1,116 +1,123 @@
-import { View, Text, ScrollView, StyleSheet, ImageBackground, TouchableOpacity, navigation} from 'react-native'
-import FlightTime from './FlightTime'
-import FlightCard from './FlightCard'
-import { useNavigation } from '@react-navigation/native'
-import PropTypes from 'prop-types'
+import { View, Text, ScrollView, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native';
+import FlightTime from './FlightTime';
+import FlightCard from './FlightCard';
+import { useNavigation } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 
 const FlightHistoryScreen = ({ userFlights}) => {
   const navigation = useNavigation()
-  console.log('userFlights:', userFlights);
-    
-  if (!userFlights) {
-      return (
-        <View>
-          <Text>Loading Flight History...</Text>
-        </View>
-      )
-    }
+   if (!userFlights) {
+   return (
+    <View style={styles.center}>
+      <Text>Loading Flight History...</Text>
+    </View>
+  )};
 
-if (userFlights.length === 0) {
-    return (
-      <View>
-        <Text>No Flights Logged</Text>
-      </View>
-    );
-  }
-  
   const handleFlightCardPress = (flight) => {
-    navigation.navigate('FlightDetails', { flight })
+    navigation.navigate('Flight Details', { flight });
   }
 
-  const flightCards = userFlights.length === 0 ? (
-    <Text>No Flights Logged</Text>
-  ) : (
-          userFlights.map((flight) => {
-          const flightId = flight.id;
-          const isoDate = flight.date;
-          const formattedDate = isoDate.split('T')[0];
-      
-      return (
-      <TouchableOpacity key={flight.id} onPress={() => handleFlightCardPress(flight)}>
-      <View>
-        <FlightCard
-          id={flightId}
-          date={formattedDate}
-          departure={flight.start_location}
-          arrival={flight.end_location}
-          aircraft={flight.aircraft}
-          pilot={flight.role}
-        />
-      </View>
-    </TouchableOpacity>
-    )
-  })
-  )
   return (
-    <ImageBackground source={require('../assets/hero-img.png')} style={styles.imageBackground}>
-      <View style={[ styles.container, { flexDirection: 'column' }]}>
-      <FlightTime style={styles.timeContainer} userFlights={userFlights} />
-        <ScrollView style={styles.scrollContainer} 
-                    contentContainerStyle={styles.contentContainer}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}>
-          <View style={styles.cardsContainer}>{flightCards}</View>
-        </ScrollView>
+    <View style={styles.mainContainer}>
+      <FlightTime userFlights={userFlights} />
+      <View style={styles.topContainer}>
+        <Text style={styles.topText}>Logged Flights</Text>
       </View>
-    </ImageBackground>
+      <ImageBackground
+        source={require('../assets/hero-img.png')}
+        style={styles.bottomContainer} >
+       <ScrollView
+          contentContainerStyle={styles.cardsContainer}
+          showsVerticalScrollIndicator={false} >
+          {userFlights.length === 0 ? (
+            <View style={styles.noFlightsContainer}>
+              <Text style={styles.noFlightsText}> No flights logged yet… </Text>
+            </View>
+          ) : (
+            userFlights.map((flight) => {
+              const formattedDate = flight.date.split('T')[0];
+              return (
+                <TouchableOpacity
+                  key={flight.id}
+                  onPress={() => handleFlightCardPress(flight)} >
+                  
+                  <FlightCard
+                    date={formattedDate}
+                    departure={flight.start_location}
+                    arrival={flight.end_location}
+                    aircraft={flight.aircraft}
+                    pilot={flight.role} />
+                </TouchableOpacity>
+              );
+            })
+          )}
+        </ScrollView>
+      </ImageBackground>
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  imageBackground: {
+// Containers
+  mainContainer: {
     flex: 1,
+    backgroundColor: '#F6F9FF',
   },
-  container: {
-    flex: 1,
-  },
-  timeContainer: {
-    flex: 2,
-  },
-  scrollContainer: {
-    flex: 3,
   
+  topContainer: {
+    backgroundColor: '#804728',
+    height: 60,
+    alignItems: 'center'
+ },
+
+  bottomContainer: {
+    flex:1,
+    paddingTop: 25,
   },
-  contentContainer: {
+
+  cardsContainer: {
+    alignItems: 'center',
+    paddingBottom: 20,
     flexGrow: 1,
   },
-  cardsContainer: {
-    flexDirection: 'column',
+// Text
+ topText: {
+  color: '#eff0f5',
+  fontSize: 20,
+  fontWeight: 'bold',
+  padding: 20,
+ },
+
+// Error Container
+  noFlightsContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10
-    
   },
+
+  noFlightsText: {
+    color:  '#1D275F',
+    fontSize: 18,
+    fontWeight: 'bold',
+  }
 });
 
 
-// FlightHistoryScreen.propTypes = {
-//   userFlights: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-//       date: PropTypes.string.isRequired,
-//       start_location: PropTypes.string.isRequired,
-//       end_location: PropTypes.string.isRequired,
-//       aircraft: PropTypes.string.isRequired,
-//       role: PropTypes.string.isRequired,
-//       day_hours: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//       night_hours: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//       description: PropTypes.string,
-//       created_at: PropTypes.string,
-//       updated_at: PropTypes.string,
-//     })
-//   ),
-// };
+FlightHistoryScreen.propTypes = {
+  userFlights: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      date: PropTypes.string.isRequired,
+      start_location: PropTypes.string.isRequired,
+      end_location: PropTypes.string.isRequired,
+      aircraft: PropTypes.string.isRequired,
+      role: PropTypes.string.isRequired,
+      day_hours: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      night_hours: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      description: PropTypes.string,
+      created_at: PropTypes.string,
+      updated_at: PropTypes.string,
+    })
+  ),
+}
 
-export default FlightHistoryScreen
+export default FlightHistoryScreen;
