@@ -15,7 +15,7 @@ class FlightForm extends Component {
       end_location: '',
       role: '',
       isFormCompleted: false,
-    };
+    }
   }
 
   handleChange = (name, value) => {
@@ -59,10 +59,10 @@ class FlightForm extends Component {
   renderModal() {
     if (this.isModalVisible) {
       return (
-        <Modal transparent animationType="fade">
+        <Modal transparent animationType='fade'>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={styles.modalText}>Flight log submitted!</Text>
+              <Text style={styles.modalText}>Flight Submitted!</Text>
             </View>
           </View>
         </Modal>
@@ -95,77 +95,69 @@ class FlightForm extends Component {
       role !== '';
 
     return (
-      <ImageBackground source={require('../assets/hero-img.png')} style={styles.imageBackground}>
-        <View style={styles.container}>
-          <Text style={styles.label}>Log a Flight</Text>
+      <ImageBackground source={require('../assets/hero-img.png')} style={styles.mainContainer}>
+        <View style={styles.mainTextContainer}>
+          <Text style={styles.labelText}>Log a Flight</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
-              placeholder="Night Hours"
-              placeholderTextColor="gray"
+              placeholder='Night Hours'
+              placeholderTextColor='gray'
               value={this.state.night_hours}
               onChangeText={(value) => this.handleChange('night_hours', value)}
-              keyboardType="numeric"
-            />
+              keyboardType='numeric' />
 
             <TextInput
               style={styles.input}
-              placeholder="Day Hours"
-              placeholderTextColor="gray"
+              placeholder='Day Hours'
+              placeholderTextColor='gray'
               value={this.state.day_hours}
               onChangeText={(value) => this.handleChange('day_hours', value)}
-              keyboardType="numeric"
-            />
+              keyboardType='numeric' />
 
             <TextInput
               style={styles.input}
-              placeholder="Aircraft"
-              placeholderTextColor="gray"
+              placeholder='Aircraft'
+              placeholderTextColor='gray'
               value={this.state.aircraft}
-              onChangeText={(value) => this.handleChange('aircraft', value)}
-            />
+              onChangeText={(value) => this.handleChange('aircraft', value)} />
 
             <TextInput
               style={styles.input}
-              placeholder="Description"
-              placeholderTextColor="gray"
+              placeholder='Description'
+              placeholderTextColor='gray'
               value={this.state.description}
-              onChangeText={(value) => this.handleChange('description', value)}
-            />
+              onChangeText={(value) => this.handleChange('description', value)} />
 
             <TextInput
               style={styles.input}
-              placeholder="Date (yyyy-mm-dd)"
-              placeholderTextColor="gray"
+              placeholder='Date (yyyy-mm-dd)'
+              placeholderTextColor='gray'
               value={this.state.date}
-              onChangeText={(value) => this.handleChange('date', value)}
-            />
+              onChangeText={(value) => this.handleChange('date', value)}  />
 
             <TextInput
               style={styles.input}
-              placeholder="Start location"
-              placeholderTextColor="gray"
+              placeholder='Start location'
+              placeholderTextColor='gray'
               value={this.state.start_location}
-              onChangeText={(value) => this.handleChange('start_location', value)}
-            />
+              onChangeText={(value) => this.handleChange('start_location', value)} />
 
             <TextInput
               style={styles.input}
-              placeholder="End location"
-              placeholderTextColor="gray"
+              placeholder='End location'
+              placeholderTextColor='gray'
               value={this.state.end_location}
-              onChangeText={(value) => this.handleChange('end_location', value)}
-            />
+              onChangeText={(value) => this.handleChange('end_location', value)} />
 
             <TextInput
               style={styles.input}
-              placeholder="Role"
-              placeholderTextColor="gray"
+              placeholder='Role'
+              placeholderTextColor='gray'
               value={this.state.role}
-              onChangeText={(value) => this.handleChange('role', value)}
-            />
+              onChangeText={(value) => this.handleChange('role', value)} />
 
-            <TouchableOpacity style={ [styles.button, { backgroundColor: isFormCompleted ? '#1f4f99' : '#888888'}, ]} onPress={event => this.handleSubmit(event)} disabled={!isFormCompleted}>
+            <TouchableOpacity style= {styles.flightButton} onPress={event => this.handleSubmit(event)} disabled={!isFormCompleted}>
               <Text style={styles.buttonText}>Log Flight</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Flight History', { userFlights })}>
@@ -181,74 +173,98 @@ class FlightForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
+// Containers
+  mainContainer: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-  imageBackground: {
-    flex: 1,
+
+  mainTextContainer: {
+    alignItems: 'center'
   },
-  label: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#1D275F',
-  },
+
   inputContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
   },
+
   input: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#FFFFFF',
     height: 40,
     width: 250,
-    borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
     borderRadius: 5,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
   },
-  button: {
+
+// Buttons
+  flightButton: {
+    backgroundColor: '#2B3A8F',
+    justifyContent: 'center',
     height: 50,
     width: 250,
-    backgroundColor: '#1f4f99',
     borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginVertical: 8,
+    margin: 15
   },
+  button: {
+    backgroundColor: '#804728',
+    justifyContent: 'center',
+    height: 50,
+    width: 250,
+    borderRadius: 20,
+    shadowColor: '#070037',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 6,
+  },
+
+  // Text
+  labelText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    color: '#1D275F',
+  },
+
   buttonText: {
     alignSelf: 'center',
     color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
+    shadowColor: '#070037',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 6,
   },
+
+  // Modal Container
   modalContainer: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+
   modalContent: {
     backgroundColor: '#FFFFFF',
     padding: 20,
     borderRadius: 10,
   },
+
   modalText: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
+  }
 });
 
 FlightForm.propTypes = {
   addFlight: PropTypes.func.isRequired,
- };
+ }
 
 export default FlightForm;
 

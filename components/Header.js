@@ -1,29 +1,43 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
-export default function Header() {
+ function Header() {
   return (
-    <View style={styles.header}>
-    <Image source={require('../assets/hero-img.png')} style={styles.backgroundImage} />
-    <Text style={styles.headerText}>FLIGHT LOG</Text>
-    </View>
-  
+    <ImageBackground
+      source={require('../assets/hero-img.png')}
+      style={styles.imageBackground}
+      imageStyle={{ transform: [{ scaleX: -1 }] }} 
+      resizeMode='cover'
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.headerText}>FLIGHT LOG</Text>
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 2,
-  },backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
+  imageBackground: {
     width: '100%',
-    height: '100%',
+    height: 250, 
+    justifyContent: 'center'
   },
+
+  overlay: {
+    height: '100%',
+    backgroundColor: 'rgba(13, 3, 42, 0.09)',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+
   headerText: {
     color: '#1D275F',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 75,
+    marginBottom: 100,
     marginLeft: 30
-  },
+  }
 });
+
+
+export default Header;

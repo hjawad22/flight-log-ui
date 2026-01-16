@@ -1,77 +1,102 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Header from '../components/Header'; 
+import FlightTime from './FlightTime';
+import PropTypes from 'prop-types';
 
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation, userFlights }) {
   return (
-    <ImageBackground source={require('../assets/hero-img.png')} style={styles.imageBackground} testID="image-background">
-      <View style={styles.container}>
-        <Text style={styles.title} testID="logo-text">Flight Log</Text>
-        <View style={styles.content}>
-          <View style={styles.textContainer}>
-            <Text style={styles.text} testID="question-text">What would you like to do today?</Text>
-          </View>
+    <View style={styles.mainContainer}>
+      <Header /> 
+      <FlightTime userFlights={userFlights} />
+        <View style={styles.textContainer} >
+          <Text style={styles.mainText} testID='question-text'>
+            What would you like to do today?
+          </Text>
           <TouchableOpacity
-            style={styles.button}
-            testID="log-flight-button"
-            onPress={() => navigation.navigate('LogFlight')}
-          >
-            <Text style={styles.buttonText}>Log a Flight</Text>
+            style={styles.logButton}
+            testID='log-flight-button'
+            onPress={() => navigation.navigate('Log Flight')} >
+            <Text style={styles.buttonText}>Log a Flight</Text >
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
-            testID="view-flights-button"
-            onPress={() => navigation.navigate('Flight History')}
-          >
+            style={styles.historyButton}
+            testID='view-flights-button'
+            onPress={() => navigation.navigate('Flight History')} >
             <Text style={styles.buttonText}>View Flight History</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </ImageBackground>
-  );
+   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+// Containers
+  mainContainer: {
     flex: 1,
+    backgroundColor: '#ffffff',
   },
-  imageBackground: {
-    flex: 1,
-  },
-  title: {
-    color: '#ffffff',
-    fontSize: 45,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 60,
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-    marginBottom: 60,
-  },
+
   textContainer: {
-    marginBottom: 20,
+    alignItems: 'center',
+    backgroundColor: '#edf2fd',
+    padding: 30
   },
-  text: {
-    color: '#1f4f99',
-    fontSize: 18,
+  
+  mainText: {
+    color: '#1D275F',
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 15
   },
-  button: {
-    backgroundColor: '#1f4f99',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginVertical: 8,
+// Buttons
+  logButton: {
+    backgroundColor: '#2B3A8F',
+    borderRadius: 20,
+    width: 310,
+    height: 50,
+    padding:10,
+    margin: 15,
+    shadowColor: '#070037',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 6,
   },
+
+  historyButton: {
+    backgroundColor: '#804728',
+    borderRadius: 20,
+    width: 310,
+    height: 50,
+    padding:10,
+    margin: 15,
+    shadowColor: '#070037',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 6,
+  },
+
   buttonText: {
     color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
-  },
+    textAlign: 'center',
+  }
 });
 
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  userFlights: PropTypes.array,
+};
+
 export default HomeScreen;
+
+
+
+
+

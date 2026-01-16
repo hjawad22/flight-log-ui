@@ -1,35 +1,31 @@
-import React from 'react'
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { View, Text, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
 
 const FlightTime = ({ userFlights }) => {
-
   const getTotalHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
-
-      let time = parseInt(cur.day_hours) + parseInt(cur.night_hours)
-
-      return acc + time
+    let time = parseInt(cur.day_hours) + parseInt(cur.night_hours)
+    
+    return acc + time
     }, 0)
     return flights
   }
 
   const getDayHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
-
-      let time = parseInt(cur.day_hours)
-
-      return acc + time
+    let time = parseInt(cur.day_hours)
+    
+    return acc + time
     }, 0)
     return flights
   }
 
   const getNightHours = () => {
     let flights = userFlights.reduce((acc, cur) => {
-
-      let time = parseInt(cur.night_hours)
-
-      return acc + time
+    let time = parseInt(cur.night_hours)
+    
+    return acc + time
     }, 0)
     return flights
   }
@@ -40,75 +36,76 @@ const FlightTime = ({ userFlights }) => {
   }
 
   return (
-    <SafeAreaView style={styles.flightTime}>
-      <View style={styles.main}>
-        <View style={styles.container}>
-        <View style={styles.detailsContainer}>
-            <Text style={styles.textSize}>Total Flights</Text>
-            <Text style={styles.textSize}>{getNumFlights()}</Text>
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.textSize}>Total Hours</Text>
-            <Text style={styles.textSize}>{getTotalHours()}</Text>
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.textSize}>Night Hours</Text>
-            <Text style={styles.textSize}>{getNightHours()}</Text>
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.textSize}>Day Hours</Text>
-            <Text style={styles.textSize}>{getDayHours()}</Text>
-          </View>
-        </View>
+   <View style={styles.mainContainer}>
+      <View style={styles.topLabelContainer}>
+        <Text style= {styles.topLabelText}> Flight Time </Text>
       </View>
-    </SafeAreaView>
-  )
+      <View style={styles.cardContainer}>
+      <View style={styles.row}>
+          <Text style={styles.label}>Total Flights</Text>
+          <Text style={styles.value}>{getNumFlights()}</Text>
+      </View>
+      <View style={styles.row}>
+          <Text style={styles.label}>Total Hours</Text>
+          <Text style={styles.value}>{getTotalHours()}</Text>
+      </View>
+      <View style={styles.row}>
+          <Text style={styles.label}>Night Hours</Text>
+          <Text style={styles.value}>{getNightHours()}</Text>
+        </View>
+      <View style={styles.row}>
+          <Text style={styles.label}>Day Hours</Text>
+          <Text style={styles.value}>{getDayHours()}</Text>
+        </View>
+     </View>
+   </View>
+ );
 }
 
 
 
 const styles = StyleSheet.create({
-  flightTime: {
-    height: '25%',
-    alignItems: 'center',
-    justifyContent: 'center'
+// Containers
+  mainContainer: {
+    backgroundColor: '#2B3A8F',
   },
-  header: {
-    height: '30%',
-    width: '100%',
-    backgroundColor: '#1f4f99',
-    justifyContent: 'center',
+
+  topLabelContainer: {
     alignItems: 'center'
   },
-  headerText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white'
+
+  cardContainer: {
+    backgroundColor: 'white',
+    padding: 20,
   },
-  main: {
-    height: '70%',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    height: '75%',
-    width: '60%',
-    backgroundColor: '#1f4f99',
-    borderRadius: 10,
-    justifyContent: 'center',
-  },
-  detailsContainer: {
+
+  row: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 6
   },
-  textSize: {
+  
+// Text
+  topLabelText: {
+    color: '#eff0f5',
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
-  }
+    padding: 20
+  },
 
-})
+  label: {
+    color: '#1D275F',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+
+  value: {
+    color: '#804728',
+    fontSize: 16,
+    fontWeight: '700', 
+  }
+});
 
 FlightTime.propTypes = {
   userFlights: PropTypes.arrayOf(
@@ -119,7 +116,7 @@ FlightTime.propTypes = {
       }).isRequired,
     })
   ).isRequired,
-};
+}
 
-export default FlightTime
+export default FlightTime;
 
