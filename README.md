@@ -1,10 +1,7 @@
 # Flight Log
 
 ## Context:
-Flight Log is an innovative React Native app, meticulously crafted by a skilled and collaborative team of 4 front-end developers and 3 back-end developers. Together, we combined our expertise and creativity to cater to the needs of pilots seeking efficient flight management right from their mobile devices. With its mobile-friendly interface, this software development project empowers users to effortlessly log their flights, maintain essential flight details, and enjoy the convenience of on-the-go flight tracking. Pilots can easily access comprehensive flight cards and obtain in-depth information with just a click, making Flight Log the ultimate companion for seamless and streamlined flight management.
-
-## Preview:
-![App Walkthrough](https://github.com/Flight-Log/flight-log-ui/assets/121843832/36479d87-745a-4e57-8f33-d86d0a992894)
+FlightLog is a React Native app built by a team of 4 front-end developers. It lets pilots efficiently log flights, track essential details, and access comprehensive flight cards on the go. With its mobile-friendly interface, Flight Log makes flight management seamless, convenient, and accessible from anywhere.
 
 
 ## Technologies:
@@ -19,6 +16,16 @@ Flight Log is an innovative React Native app, meticulously crafted by a skilled 
 - **CircleCI**: CircleCI served as our robust CI/CD (Continuous Integration/Continuous Deployment) platform, automating the process of building, testing, and deploying our code. It played a crucial role in maintaining a reliable and efficient development workflow.
 
 - **Figma**: Figma played a crucial role in our design process, serving as a collaborative platform for creating and visualizing the user interface and user experience (UI/UX) of our app.
+
+## This Application Uses the FlightLog API
+
+A RESTful API for logging, tracking, and managing flight records.  
+
+[FlightLog API Repository](https://github.com/hjawad22/flight-log-api)
+
+## Preview:
+
+<video src="assets/preview.mp4" controls width="200"></video>
 
 ## Contributors (Front End):
 Houda Jawad | [GitHub](https://github.com/hjawad22) | [LinkedIn](https://www.linkedin.com/in/houda-jawad-b0315675/)\
@@ -98,3 +105,5 @@ To launch the development server, run the following command:
 Once the development server starts, you will see a QR code in the terminal. Use the Expo Go app on your Android or iOS device to scan the QR code and view the app on your phone.
 
 Alternatively, you can select one of the options presented in the terminal (such as "w" for web, "i" for iOS simulator, or "a" for Android emulator) to view the app in your preferred environment.
+
+
