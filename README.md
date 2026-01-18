@@ -25,7 +25,7 @@ A RESTful API for logging, tracking, and managing flight records.
 
 ## Preview:
 
-<video src="assets/preview.mp4" controls width="200"></video>
+[![Design Preview](assets/preview.gif)](https://www.canva.com/design/DAG-zMb-JmM/G6CZQeTk48GphzHLc9WLSg/watch)
 
 ## Contributors (Front End):
 Houda Jawad | [GitHub](https://github.com/hjawad22) | [LinkedIn](https://www.linkedin.com/in/houda-jawad-b0315675/)\
