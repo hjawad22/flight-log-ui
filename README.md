@@ -7,8 +7,6 @@ FlightLog is a React Native app built by a team of 4 front-end developers. It le
 ## Technologies:
 - **React Native**: We leveraged React Native, a popular JavaScript framework, to create a seamless and native-like mobile app experience across both Android and iOS platforms.
 
-- **Cypress**: For comprehensive and reliable end-to-end testing, we utilized Cypress, a modern testing framework that ensures the quality and stability of our application.
-
 - **APIs**: Integrating external APIs allowed us to access and utilize valuable data and functionalities, enriching our app with real-time information and services.
 
 - **Git**: We employed Git as our version control system, facilitating collaboration and enabling efficient tracking of code changes and improvements.
@@ -55,7 +53,6 @@ Daily stand-ups and retrospectives fostered effective communication and teamwork
 ## Challenges:
 
 - Overcoming challenges related to deploying the application using Vercel, ensuring a robust and reliable deployment process.
-- Faced difficulties in conducting comprehensive end-to-end testing with Cypress, yet persevered to establish a comprehensive testing framework.
 - Implemented Continuous Integration (CI) with CircleCI and Cypress, overcoming obstacles to ensure a seamless and efficient development workflow.
 
 ## Future Addition:
@@ -74,12 +71,6 @@ For Windows users, this step is not necessary if you intend to use Android emula
 ### Install Node.js:
 
 Ensure you have Node.js installed on your computer. You can download the latest version from the official Node.js website.
-
-### Install Expo CLI:
-
-Open your terminal or command prompt and run the following command to install Expo CLI globally:
-
-```npm install -g expo-cli```
 
 ### Clone the Project Repository:
 
